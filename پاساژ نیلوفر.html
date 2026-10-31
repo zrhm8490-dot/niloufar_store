@@ -1,0 +1,380 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>پاساژ نیلوفر</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;800&display=swap">
+<style>
+/* Layout: mall-directory feel, right-to-left. Sticky signage bar, product floor first, basket + live suggestions beside it, method below. */
+:root {
+  --bg: #EEF2F1;
+  --surface: #FFFFFF;
+  --ink: #0E2A2F;
+  --muted: #566B70;
+  --line: #D3DCDC;
+  --accent: #0E7C86;
+  --accent-ink: #FFFFFF;
+  --hi: #F4C95D;
+  --hi-ink: #3A2B00;
+  --fashion-bg: #F2D9C9; --fashion-fg: #7A3412;
+  --tech-bg: #D5E3F7; --tech-fg: #1E4A8A;
+  --beauty-bg: #F5D3E0; --beauty-fg: #8A1E4F;
+  --food-bg: #E3EDC9; --food-fg: #4B5E12;
+  --font-display: "Vazirmatn", Tahoma, "Segoe UI", system-ui, sans-serif;
+  --font-body: "Vazirmatn", Tahoma, "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0A1B1F; --surface: #112A30; --ink: #E6F0EF; --muted: #9DB5B8; --line: #234047;
+    --accent: #3FC1CC; --accent-ink: #04262B; --hi: #F4C95D; --hi-ink: #3A2B00;
+    --fashion-bg: #4A2B1C; --fashion-fg: #F2C9AE;
+    --tech-bg: #1F3452; --tech-fg: #B9D3F5;
+    --beauty-bg: #4D2236; --beauty-fg: #F2BBD2;
+    --food-bg: #36421A; --food-fg: #D2E3A0;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0A1B1F; --surface: #112A30; --ink: #E6F0EF; --muted: #9DB5B8; --line: #234047;
+  --accent: #3FC1CC; --accent-ink: #04262B; --hi: #F4C95D; --hi-ink: #3A2B00;
+  --fashion-bg: #4A2B1C; --fashion-fg: #F2C9AE;
+  --tech-bg: #1F3452; --tech-fg: #B9D3F5;
+  --beauty-bg: #4D2236; --beauty-fg: #F2BBD2;
+  --food-bg: #36421A; --food-fg: #D2E3A0;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 48px;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 10; background: var(--ink);
+}
+h1, h2, h3 { font-family: var(--font-display); margin: 0; text-wrap: balance; line-height: 1.35; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.wrap { max-width: 1120px; margin: 0 auto; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* Signage bar */
+.sign {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9;
+  background: var(--ink); color: var(--bg);
+  margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.sign .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 10px; }
+.brand { font-weight: 800; font-size: 1.35rem; display: flex; align-items: baseline; gap: 10px; }
+.brand small { font-weight: 400; font-size: 0.8rem; opacity: 0.75; }
+.basket-btn {
+  background: var(--hi); color: var(--hi-ink); border: 0; border-radius: 6px;
+  padding: 6px 14px; font-weight: 600; display: flex; gap: 8px; align-items: center;
+}
+.basket-btn .count { background: var(--hi-ink); color: var(--hi); border-radius: 4px; padding: 0 8px; font-size: 0.85rem; }
+
+/* Opener */
+.opener { padding-block: 36px 24px; display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 24px; align-items: end; }
+.opener h1 { font-size: clamp(1.7rem, 4.6vw, 2.9rem); font-weight: 800; }
+.opener p { margin: 0; color: var(--muted); max-width: 46ch; }
+
+/* Main */
+.layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 360px); gap: 28px; align-items: start; }
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.tab {
+  border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 4px 16px; font-weight: 500;
+}
+.tab[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 14px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
+.tile {
+  aspect-ratio: 4 / 3; display: grid; place-items: center;
+  font-family: var(--font-display); font-weight: 800; font-size: 3rem; line-height: 1;
+}
+.cat-fashion { background: var(--fashion-bg); color: var(--fashion-fg); }
+.cat-tech { background: var(--tech-bg); color: var(--tech-fg); }
+.cat-beauty { background: var(--beauty-bg); color: var(--beauty-fg); }
+.cat-food { background: var(--food-bg); color: var(--food-fg); }
+.card .body { padding: 12px; display: flex; flex-direction: column; gap: 2px; flex: 1; }
+.card .cat { font-size: 0.78rem; color: var(--muted); }
+.card h3 { font-size: 1.02rem; font-weight: 600; }
+.card .row { display: flex; flex-direction: column; gap: 8px; margin-top: auto; padding-top: 8px; }
+.price { font-weight: 500; font-variant-numeric: tabular-nums; font-size: 0.9rem; }
+.add {
+  border: 1px solid var(--accent); background: transparent; color: var(--accent);
+  border-radius: 6px; padding: 3px 12px; font-weight: 600; font-size: 0.9rem;
+}
+.add:hover { background: var(--accent); color: var(--accent-ink); }
+.add[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+
+/* Basket */
+.side { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 68px); display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; min-width: 0; }
+.panel h2 { font-size: 1.1rem; margin-bottom: 10px; }
+.lines { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.lines li { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.lines .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+.lines .nm { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.rm { border: 0; background: none; color: var(--muted); font-size: 1.2rem; line-height: 1; padding: 4px 8px; border-radius: 4px; }
+.rm:hover { color: var(--ink); background: var(--bg); }
+.total { display: flex; justify-content: space-between; gap: 10px; border-top: 1px solid var(--line); margin-top: 12px; padding-top: 10px; font-weight: 600; }
+.empty { color: var(--muted); margin: 0; }
+
+.recs-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 4px; }
+.recs-head h2 { margin-bottom: 0; }
+.recs-head .tag { font-size: 0.72rem; background: var(--hi); color: var(--hi-ink); padding: 0 8px; border-radius: 4px; white-space: nowrap; font-weight: 600; }
+.sub { color: var(--muted); font-size: 0.9rem; margin: 0 0 12px; }
+.recs { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.rec { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 10px; align-items: center; }
+.rec .nm { font-weight: 600; }
+.rec .why { grid-column: 1 / -1; color: var(--muted); font-size: 0.84rem; line-height: 1.6; }
+.rec .why b { color: var(--ink); font-weight: 600; }
+.bar { grid-column: 1 / -1; height: 6px; background: var(--bg); border-radius: 3px; overflow: hidden; margin-top: 4px; }
+.bar i { display: block; height: 100%; background: var(--accent); border-radius: 3px; }
+.slider { margin-top: 14px; display: grid; gap: 4px; }
+.slider label { font-size: 0.86rem; color: var(--muted); display: flex; justify-content: space-between; gap: 10px; }
+.slider input { width: 100%; accent-color: var(--accent); }
+
+/* Method */
+.method { margin-top: 56px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 32px; }
+.method h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; margin-bottom: 12px; }
+.terms { display: grid; gap: 14px; margin: 16px 0 0; }
+.terms div { border-right: 3px solid var(--accent); padding-right: 12px; }
+.terms dt { font-weight: 600; }
+.terms dd { margin: 2px 0 0; color: var(--muted); font-size: 0.94rem; }
+.stats { display: flex; flex-wrap: wrap; gap: 4px 22px; font-size: 0.88rem; color: var(--muted); margin-top: 16px; }
+.stats b { color: var(--ink); font-weight: 600; }
+.tablebox { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 0.92rem; }
+th, td { padding: 9px 12px; text-align: start; white-space: nowrap; border-bottom: 1px solid var(--line); }
+th { font-size: 0.8rem; color: var(--muted); font-weight: 500; }
+tr:last-child td { border-bottom: 0; }
+td.n, th.n { font-variant-numeric: tabular-nums; text-align: center; }
+.foot { margin-top: 40px; color: var(--muted); font-size: 0.86rem; max-width: 70ch; }
+
+@media (max-width: 860px) {
+  .opener, .layout, .method { grid-template-columns: minmax(0, 1fr); }
+  .side { position: static; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .tile { font-size: 2.4rem; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .bar i { transition: width 0.3s ease; }
+  .add, .tab { transition: background 0.15s ease, color 0.15s ease; }
+}
+</style>
+
+<div dir="rtl" lang="fa">
+<header class="sign">
+  <div class="wrap">
+    <div class="brand">پاساژ نیلوفر <small>مرکز خرید</small></div>
+    <button class="basket-btn" id="goBasket" type="button">سبد خرید <span class="count num" id="count">۰</span></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="opener">
+    <h1>همه‌چیز زیر یک سقف، با پیشنهادهایی که به سبد شما می‌خورد.</h1>
+    <p>یک کالا به سبد اضافه کنید. فهرست کنار صفحه فوراً با کالاهایی که خریداران دیگر همراه آن خریده‌اند به‌روز می‌شود. این پیشنهادها از ۲۰۰۰ سبد خرید قبلی به دست آمده است.</p>
+  </section>
+
+  <div class="layout">
+    <section aria-labelledby="shopH">
+      <h2 id="shopH" style="position:absolute;right:-9999px">کالاها</h2>
+      <div class="tabs" id="tabs" role="group" aria-label="فیلتر بر اساس طبقه"></div>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <aside class="side" id="side">
+      <div class="panel">
+        <h2>سبد شما</h2>
+        <ul class="lines" id="lines"></ul>
+        <div class="total"><span>جمع کل</span><span class="price num" id="total"></span></div>
+      </div>
+      <div class="panel">
+        <div class="recs-head"><h2>مشتریان این‌ها را هم می‌خرند</h2><span class="tag" dir="ltr">Apriori</span></div>
+        <p class="sub" id="recSub"></p>
+        <ul class="recs" id="recs"></ul>
+        <div class="slider">
+          <label for="minConf"><span>حداقل اطمینان پیشنهادها</span><span class="num" id="confVal"></span></label>
+          <input type="range" id="minConf" min="40" max="90" step="5" value="40">
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <section class="method" aria-labelledby="howH">
+    <div>
+      <h2 id="howH">پیشنهادها چگونه پیدا می‌شوند؟</h2>
+      <p style="margin:0;color:var(--muted)">الگوریتم Apriori سبدهای خرید قبلی را بررسی می‌کند و مجموعه‌کالاهایی را که اغلب با هم دیده می‌شوند پیدا می‌کند. سپس آن‌ها را به قانون‌های «اگر… آنگاه…» تبدیل می‌کند. ترکیب‌های کم‌تکرار زود کنار گذاشته می‌شوند و همین جست‌وجو را سریع نگه می‌دارد.</p>
+      <dl class="terms">
+        <div><dt>پشتیبان (Support)</dt><dd>سهم سبدهایی که کل این ترکیب را دارند.</dd></div>
+        <div><dt>اطمینان (Confidence)</dt><dd>از سبدهایی که کالای اول را دارند، چند درصد کالای دوم را هم دارند.</dd></div>
+        <div><dt>لیفت (Lift)</dt><dd>این دو کالا چند برابر شانس تصادفی با هم خریده می‌شوند. عدد بالاتر از ۱ یعنی ارتباط واقعی.</dd></div>
+      </dl>
+      <div class="stats num" id="stats"></div>
+    </div>
+    <div>
+      <div class="tablebox">
+        <table>
+          <thead><tr><th>اگر مشتری بخرد</th><th>این را هم می‌خرد</th><th class="n">اطمینان</th><th class="n">لیفت</th></tr></thead>
+          <tbody id="rulesBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <p class="foot">پاساژ نیلوفر یک فروشگاه فرضی برای نمایش الگوریتم Apriori است. سبدها داده‌های نمونهٔ ساختگی هستند، با حداقل پشتیبان ۴٪ و حداقل اطمینان ۴۰٪.</p>
+</main>
+</div>
+
+<script>
+document.documentElement.setAttribute("dir", "rtl");
+document.documentElement.setAttribute("lang", "fa");
+
+var DATA = {"n":2000,"itemsets":143,"nrules":251,"rules":[[["Jeans","Snacks"],["Coffee","Sneakers","T-Shirt"],0.0415,0.7094,13.775],[["Coffee","Sneakers","T-Shirt"],["Jeans","Snacks"],0.0415,0.8058,13.775],[["Coffee","Jeans"],["Snacks","Sneakers","T-Shirt"],0.0415,0.7034,13.527],[["Snacks","Sneakers","T-Shirt"],["Coffee","Jeans"],0.0415,0.7981,13.527],[["Coffee","Jeans","Sneakers"],["Snacks","T-Shirt"],0.0415,0.7981,13.413],[["Snacks","T-Shirt"],["Coffee","Jeans","Sneakers"],0.0415,0.6975,13.413],[["Jeans","Snacks","Sneakers"],["Coffee","T-Shirt"],0.0415,0.7981,13.301],[["Coffee","T-Shirt"],["Jeans","Snacks","Sneakers"],0.0415,0.6917,13.301],[["Jeans","Snacks"],["Coffee","T-Shirt"],0.042,0.7179,11.966],[["Coffee","T-Shirt"],["Jeans","Snacks"],0.042,0.7,11.966],[["Coffee","Jeans"],["Snacks","T-Shirt"],0.042,0.7119,11.964],[["Snacks","T-Shirt"],["Coffee","Jeans"],0.042,0.7059,11.964],[["Coffee","Sneakers"],["Jeans","Snacks","T-Shirt"],0.0415,0.5188,10.172],[["Jeans","Snacks","T-Shirt"],["Coffee","Sneakers"],0.0415,0.8137,10.172],[["Coffee","Jeans","T-Shirt"],["Snacks","Sneakers"],0.0415,0.83,10.122],[["Snacks","Sneakers"],["Coffee","Jeans","T-Shirt"],0.0415,0.5061,10.122],[["Jeans","Snacks"],["Coffee","Sneakers"],0.043,0.735,9.188],[["Coffee","Sneakers"],["Jeans","Snacks"],0.043,0.5375,9.188],[["Snacks","T-Shirt"],["Coffee","Sneakers"],0.043,0.7227,9.034],[["Coffee","Sneakers"],["Snacks","T-Shirt"],0.043,0.5375,9.034],[["Coffee","Jeans"],["Snacks","Sneakers"],0.043,0.7288,8.888],[["Snacks","Sneakers"],["Coffee","Jeans"],0.043,0.5244,8.888],[["Coffee","T-Shirt"],["Snacks","Sneakers"],0.043,0.7167,8.74],[["Snacks","Sneakers"],["Coffee","T-Shirt"],0.043,0.5244,8.74],[["Phone","T-Shirt"],["Phone Case","Sneakers"],0.0405,0.587,7.202],[["Phone Case","Sneakers"],["Phone","T-Shirt"],0.0405,0.4969,7.202],[["Phone Case","T-Shirt"],["Phone","Sneakers"],0.0405,0.7232,6.954],[["Laptop"],["Backpack","Mouse"],0.109,0.6834,6.157],[["Backpack","Mouse"],["Laptop"],0.109,0.982,6.157],[["Backpack","Laptop"],["Mouse"],0.109,0.9864,5.997],[["Mouse"],["Backpack","Laptop"],0.109,0.6626,5.997],[["Laptop","Mouse"],["Backpack"],0.109,0.9776,5.854],[["Backpack"],["Laptop","Mouse"],0.109,0.6527,5.854],[["Charger","Snacks"],["Phone","Phone Case"],0.04,0.8889,4.618],[["Charger","Socks"],["Phone","Phone Case"],0.0405,0.8804,4.574],[["Charger","Coffee"],["Phone","Phone Case"],0.04,0.8791,4.567],[["Charger","Sneakers"],["Phone","Phone Case"],0.0665,0.875,4.545],[["Charger","T-Shirt"],["Phone","Phone Case"],0.0465,0.8611,4.473],[["Charger","Jeans"],["Phone","Phone Case"],0.0435,0.8529,4.431],[["Phone","Phone Case","Socks"],["Charger"],0.0405,1.0,4.386],[["Charger","Coffee","Phone"],["Phone Case"],0.04,1.0,4.367],[["Charger","Phone","T-Shirt"],["Phone Case"],0.0465,1.0,4.367],[["Phone Case","Socks"],["Charger","Phone"],0.0405,0.8351,4.361],[["Phone Case","T-Shirt"],["Charger","Phone"],0.0465,0.8304,4.336],[["Charger","Phone","Sneakers"],["Phone Case"],0.0665,0.9925,4.334],[["Phone","Phone Case","Sneakers"],["Charger"],0.0665,0.9852,4.321],[["Charger","Jeans","Phone"],["Phone Case"],0.0435,0.9886,4.317],[["Charger","Phone","Socks"],["Phone Case"],0.0405,0.9878,4.314],[["Charger","Phone","Snacks"],["Phone Case"],0.04,0.9877,4.313],[["Phone","Phone Case","T-Shirt"],["Charger"],0.0465,0.9789,4.294],[["Jeans","Phone","Phone Case"],["Charger"],0.0435,0.9775,4.287],[["Charger","Phone"],["Phone Case"],0.188,0.9817,4.287],[["Phone Case"],["Charger","Phone"],0.188,0.821,4.287],[["Phone","Phone Case"],["Charger"],0.188,0.9766,4.283],[["Charger"],["Phone","Phone Case"],0.188,0.8246,4.283],[["Coffee","Phone","Phone Case"],["Charger"],0.04,0.9756,4.279],[["Phone","Phone Case","Snacks"],["Charger"],0.04,0.9756,4.279],[["Phone Case","Snacks"],["Charger","Phone"],0.04,0.8163,4.263],[["Phone Case","Sneakers"],["Charger","Phone"],0.0665,0.816,4.261],[["Laptop"],["Mouse"],0.1115,0.6991,4.25],[["Mouse"],["Laptop"],0.1115,0.6778,4.25],[["Coffee","Phone Case"],["Charger","Phone"],0.04,0.8081,4.22],[["Jeans","Phone Case"],["Charger","Phone"],0.0435,0.8056,4.207],[["Jeans","Socks"],["Sneakers","T-Shirt"],0.0505,0.8707,4.206],[["Jeans","Snacks"],["Sneakers","T-Shirt"],0.0505,0.8632,4.17],[["Jeans","Phone"],["Sneakers","T-Shirt"],0.056,0.8615,4.162],[["Jeans","Phone Case"],["Sneakers","T-Shirt"],0.0465,0.8611,4.16],[["Snacks","T-Shirt"],["Jeans","Sneakers"],0.0505,0.8487,4.15],[["Laptop"],["Backpack"],0.1105,0.6928,4.148],[["Backpack"],["Laptop"],0.1105,0.6617,4.148],[["Coffee","Jeans","Snacks"],["Sneakers","T-Shirt"],0.0415,0.8557,4.134],[["Jeans","Phone","Sneakers"],["T-Shirt"],0.056,0.9912,4.113],[["Charger","Jeans","Sneakers"],["T-Shirt"],0.043,0.9885,4.102],[["Charger","Jeans"],["Sneakers","T-Shirt"],0.043,0.8431,4.073],[["Phone Case","T-Shirt"],["Jeans","Sneakers"],0.0465,0.8304,4.06],[["Coffee","Snacks","T-Shirt"],["Jeans","Sneakers"],0.0415,0.83,4.059],[["Coffee","Jeans"],["Sneakers","T-Shirt"],0.0495,0.839,4.053],[["Mouse"],["Backpack"],0.111,0.6748,4.041],[["Backpack"],["Mouse"],0.111,0.6647,4.041],[["Coffee","T-Shirt"],["Jeans","Sneakers"],0.0495,0.825,4.034],[["Jeans","Snacks","Sneakers"],["T-Shirt"],0.0505,0.9712,4.03],[["Jeans","Phone Case","Sneakers"],["T-Shirt"],0.0465,0.9688,4.02],[["Coffee","Jeans","Snacks","Sneakers"],["T-Shirt"],0.0415,0.9651,4.005],[["Jeans","Sneakers"],["T-Shirt"],0.197,0.9633,3.997],[["T-Shirt"],["Jeans","Sneakers"],0.197,0.8174,3.997],[["Socks","T-Shirt"],["Jeans","Sneakers"],0.0505,0.8145,3.983],[["Snacks","Sneakers","T-Shirt"],["Jeans"],0.0505,0.9712,3.98],[["Phone","T-Shirt"],["Jeans","Sneakers"],0.056,0.8116,3.969],[["Coffee","Snacks","Sneakers","T-Shirt"],["Jeans"],0.0415,0.9651,3.955],[["Coffee","Jeans","Sneakers"],["T-Shirt"],0.0495,0.9519,3.95],[["Coffee","Sneakers","T-Shirt"],["Jeans"],0.0495,0.9612,3.939],[["Phone Case","Sneakers","T-Shirt"],["Jeans"],0.0465,0.9588,3.929],[["Lipstick"],["Perfume"],0.1185,0.685,3.914],[["Perfume"],["Lipstick"],0.1185,0.6771,3.914],[["Sneakers","T-Shirt"],["Jeans"],0.197,0.9517,3.9],[["Jeans"],["Sneakers","T-Shirt"],0.197,0.8074,3.9],[["Charger","T-Shirt"],["Jeans","Sneakers"],0.043,0.7963,3.894],[["Charger","Socks"],["Phone Case"],0.041,0.8913,3.892],[["Charger","Snacks"],["Phone Case"],0.04,0.8889,3.882],[["Charger","Sneakers","T-Shirt"],["Jeans"],0.043,0.9451,3.873],[["Phone","Sneakers","T-Shirt"],["Jeans"],0.056,0.9412,3.857],[["Charger","Sneakers"],["Phone Case"],0.067,0.8816,3.85],[["Charger","Coffee"],["Phone Case"],0.04,0.8791,3.839],[["Jeans","Sneakers","Socks"],["T-Shirt"],0.0505,0.9099,3.776],[["Charger","T-Shirt"],["Phone Case"],0.0465,0.8611,3.76],[["Charger","Jeans"],["Phone Case"],0.0435,0.8529,3.725],[["Phone Case","Socks"],["Charger"],0.041,0.8454,3.708],[["Coffee","Socks"],["Snacks"],0.042,0.8842,3.677],[["Phone Case","T-Shirt"],["Charger"],0.0465,0.8304,3.642],[["Charger"],["Phone Case"],0.189,0.8289,3.62],[["Phone Case"],["Charger"],0.189,0.8253,3.62],[["Jeans","Snacks"],["T-Shirt"],0.051,0.8718,3.617],[["Jeans","Socks"],["T-Shirt"],0.0505,0.8707,3.613],[["Jeans","Phone Case"],["T-Shirt"],0.047,0.8704,3.611],[["Jeans","Phone"],["T-Shirt"],0.0565,0.8692,3.607],[["Phone Case","Sneakers"],["Charger"],0.067,0.8221,3.606],[["Coffee","Jeans","Snacks"],["T-Shirt"],0.042,0.866,3.593],[["Phone Case","Snacks"],["Charger"],0.04,0.8163,3.58],[["Snacks","Socks"],["Coffee"],0.042,0.8571,3.571],[["Phone","T-Shirt"],["Charger","Phone Case"],0.0465,0.6739,3.566],[["Coffee","Sneakers"],["Snacks"],0.0685,0.8563,3.56],[["Coffee","Phone Case"],["Charger"],0.04,0.8081,3.544],[["Jeans","Phone"],["Charger","Phone Case"],0.0435,0.6692,3.541],[["Charger","Jeans"],["T-Shirt"],0.0435,0.8529,3.539],[["Jeans","Phone Case"],["Charger"],0.0435,0.8056,3.533],[["Coffee","Jeans"],["T-Shirt"],0.05,0.8475,3.516],[["Snacks","T-Shirt"],["Jeans"],0.051,0.8571,3.513],[["Snacks","T-Shirt"],["Coffee"],0.05,0.8403,3.501],[["Coffee","Jeans","T-Shirt"],["Snacks"],0.042,0.84,3.493],[["Coffee","Jeans","Sneakers","T-Shirt"],["Snacks"],0.0415,0.8384,3.486],[["Snacks","Sneakers"],["Coffee"],0.0685,0.8354,3.481],[["Coffee","Sneakers","T-Shirt"],["Snacks"],0.043,0.835,3.472],[["Coffee","T-Shirt"],["Snacks"],0.05,0.8333,3.465],[["Jeans","Snacks"],["Coffee"],0.0485,0.8291,3.454],[["Jeans","Snacks","Sneakers"],["Coffee"],0.043,0.8269,3.446],[["Snacks","Sneakers","T-Shirt"],["Coffee"],0.043,0.8269,3.446],[["Phone Case","Snacks"],["Coffee"],0.0405,0.8265,3.444],[["Coffee","Snacks","T-Shirt"],["Jeans"],0.042,0.84,3.443],[["Phone Case","T-Shirt"],["Jeans"],0.047,0.8393,3.44],[["Coffee","Jeans","Sneakers"],["Snacks"],0.043,0.8269,3.438],[["Jeans","Snacks","T-Shirt"],["Coffee"],0.042,0.8235,3.431],[["Jeans","Snacks","Sneakers","T-Shirt"],["Coffee"],0.0415,0.8218,3.424],[["Sneakers","Socks","T-Shirt"],["Jeans"],0.0505,0.8347,3.421],[["Coffee","Jeans"],["Snacks"],0.0485,0.822,3.418],[["Coffee","T-Shirt"],["Jeans"],0.05,0.8333,3.415],[["Coffee","Phone Case"],["Snacks"],0.0405,0.8182,3.402],[["Phone","Sneakers"],["Charger","Phone Case"],0.0665,0.6394,3.383],[["T-Shirt"],["Jeans"],0.1985,0.8237,3.376],[["Jeans"],["T-Shirt"],0.1985,0.8135,3.376],[["Phone","T-Shirt"],["Jeans"],0.0565,0.8188,3.356],[["Socks","T-Shirt"],["Jeans"],0.0505,0.8145,3.338],[["Coffee"],["Snacks"],0.192,0.8,3.326],[["Snacks"],["Coffee"],0.192,0.7983,3.326],[["Phone","Snacks"],["Coffee"],0.053,0.797,3.321],[["Coffee","Phone"],["Snacks"],0.053,0.797,3.314],[["Charger","T-Shirt"],["Jeans"],0.0435,0.8056,3.301],[["Phone","Socks"],["Charger","Phone Case"],0.0405,0.6231,3.297],[["Charger","Jeans","Phone Case"],["Phone"],0.0435,1.0,3.215],[["Charger","Coffee","Phone Case"],["Phone"],0.04,1.0,3.215],[["Charger","Phone Case","Snacks"],["Phone"],0.04,1.0,3.215],[["Charger","Phone Case","T-Shirt"],["Phone"],0.0465,1.0,3.215],[["Charger","Phone Case"],["Phone"],0.188,0.9947,3.198],[["Phone"],["Charger","Phone Case"],0.188,0.6045,3.198],[["Charger","Phone Case","Sneakers"],["Phone"],0.0665,0.9925,3.191],[["Coffee","Phone"],["Charger","Phone Case"],0.04,0.6015,3.183],[["Phone","Snacks"],["Charger","Phone Case"],0.04,0.6015,3.183],[["Charger","Phone Case","Socks"],["Phone"],0.0405,0.9878,3.176],[["Coffee","Sneakers"],["Jeans","T-Shirt"],0.0495,0.6188,3.117],[["Snacks","Sneakers"],["Jeans","T-Shirt"],0.0505,0.6159,3.103],[["Coffee","Snacks","Sneakers"],["Jeans","T-Shirt"],0.0415,0.6058,3.052],[["Phone","T-Shirt"],["Phone Case"],0.0475,0.6884,3.006],[["Jeans","Phone"],["Phone Case"],0.0445,0.6846,2.99],[["Phone","Sneakers","T-Shirt"],["Phone Case"],0.0405,0.6807,2.972],[["Jeans","Phone"],["Charger"],0.044,0.6769,2.969],[["Phone","T-Shirt"],["Charger"],0.0465,0.6739,2.956],[["Charger","Snacks"],["Phone"],0.0405,0.9,2.894],[["Phone Case","Sneakers"],["Jeans","T-Shirt"],0.0465,0.5706,2.874],[["Charger","Socks"],["Phone"],0.041,0.8913,2.866],[["Charger","Sneakers"],["Jeans","T-Shirt"],0.043,0.5658,2.85],[["Charger","Sneakers"],["Phone"],0.067,0.8816,2.835],[["Phone","Sneakers"],["Phone Case"],0.0675,0.649,2.834],[["Charger","Coffee"],["Phone"],0.04,0.8791,2.827],[["Phone","Sneakers"],["Charger"],0.067,0.6442,2.826],[["Jeans","Socks","T-Shirt"],["Sneakers"],0.0505,1.0,2.789],[["Charger","Jeans"],["Phone"],0.044,0.8627,2.774],[["Charger","T-Shirt"],["Phone"],0.0465,0.8611,2.769],[["Sneakers"],["Jeans","T-Shirt"],0.197,0.5495,2.768],[["Jeans","T-Shirt"],["Sneakers"],0.197,0.9924,2.768],[["Phone","Socks"],["Charger"],0.041,0.6308,2.767],[["Jeans","Phone","T-Shirt"],["Sneakers"],0.056,0.9912,2.765],[["Jeans","Snacks","T-Shirt"],["Sneakers"],0.0505,0.9902,2.762],[["Coffee","Jeans","T-Shirt"],["Sneakers"],0.0495,0.99,2.762],[["Jeans","Phone Case","T-Shirt"],["Sneakers"],0.0465,0.9894,2.76],[["Charger","Jeans","T-Shirt"],["Sneakers"],0.043,0.9885,2.757],[["Coffee","Jeans","Snacks","T-Shirt"],["Sneakers"],0.0415,0.9881,2.756],[["Phone Case","T-Shirt"],["Phone"],0.0475,0.8482,2.727],[["Socks","T-Shirt"],["Sneakers"],0.0605,0.9758,2.722],[["Phone","Socks"],["Phone Case"],0.0405,0.6231,2.721],[["Phone","Sneakers"],["Jeans","T-Shirt"],0.056,0.5385,2.713],[["Phone Case"],["Phone"],0.1925,0.8406,2.703],[["Phone"],["Phone Case"],0.1925,0.619,2.703],[["Phone"],["Charger"],0.1915,0.6158,2.701],[["Charger"],["Phone"],0.1915,0.8399,2.701],[["Coffee","Phone"],["Phone Case"],0.041,0.6165,2.692],[["Phone","Snacks"],["Phone Case"],0.041,0.6165,2.692],[["Phone Case","Snacks"],["Phone"],0.041,0.8367,2.69],[["Phone Case","Socks"],["Phone"],0.0405,0.8351,2.685],[["Phone Case","Sneakers","T-Shirt"],["Phone"],0.0405,0.8351,2.685],[["Coffee","Sneakers"],["T-Shirt"],0.0515,0.6437,2.671],[["Phone","Snacks"],["Charger"],0.0405,0.609,2.671],[["Jeans","Socks"],["Sneakers"],0.0555,0.9569,2.669],[["Coffee","Sneakers"],["Jeans"],0.052,0.65,2.664],[["Coffee","Phone Case"],["Phone"],0.041,0.8283,2.663],[["Phone Case","Sneakers"],["Phone"],0.0675,0.8282,2.663],[["Jeans","Phone Case"],["Phone"],0.0445,0.8241,2.65],[["Coffee","Phone"],["Charger"],0.04,0.6015,2.638],[["Snacks","Sneakers"],["T-Shirt"],0.052,0.6341,2.631],[["Coffee","Snacks","Sneakers"],["T-Shirt"],0.043,0.6277,2.605],[["Snacks","Sneakers"],["Jeans"],0.052,0.6341,2.599],[["Coffee","Snacks","Sneakers"],["Jeans"],0.043,0.6277,2.573],[["Phone","Phone Case","Sneakers"],["T-Shirt"],0.0405,0.6,2.49],[["Charger","Sneakers"],["T-Shirt"],0.0455,0.5987,2.484],[["Jeans","Phone Case"],["Sneakers"],0.048,0.8889,2.479],[["Jeans","Snacks"],["Sneakers"],0.052,0.8889,2.479],[["Coffee","Jeans","Snacks"],["Sneakers"],0.043,0.8866,2.473],[["Phone Case","Sneakers"],["T-Shirt"],0.0485,0.5951,2.469],[["Coffee","Jeans"],["Sneakers"],0.052,0.8814,2.458],[["Snacks","T-Shirt"],["Sneakers"],0.052,0.8739,2.438],[["Jeans","Phone"],["Sneakers"],0.0565,0.8692,2.425],[["Phone Case","T-Shirt"],["Sneakers"],0.0485,0.8661,2.416],[["Phone Case","Sneakers"],["Jeans"],0.048,0.589,2.414],[["Phone","T-Shirt"],["Sneakers"],0.0595,0.8623,2.405],[["Coffee","Snacks","T-Shirt"],["Sneakers"],0.043,0.86,2.399],[["T-Shirt"],["Sneakers"],0.207,0.8589,2.396],[["Sneakers"],["T-Shirt"],0.207,0.5774,2.396],[["Coffee","T-Shirt"],["Sneakers"],0.0515,0.8583,2.394],[["Charger","Jeans"],["Sneakers"],0.0435,0.8529,2.379],[["Phone","Phone Case","T-Shirt"],["Sneakers"],0.0405,0.8526,2.378],[["Phone","Sneakers"],["T-Shirt"],0.0595,0.5721,2.374],[["Charger","T-Shirt"],["Sneakers"],0.0455,0.8426,2.35],[["Charger","Sneakers"],["Jeans"],0.0435,0.5724,2.346],[["Jeans"],["Sneakers"],0.2045,0.8381,2.338],[["Sneakers"],["Jeans"],0.2045,0.5704,2.338],[["Phone Case","Socks"],["Sneakers"],0.04,0.8247,2.301],[["Headphones"],["Phone"],0.107,0.7133,2.294],[["Phone","Sneakers"],["Jeans"],0.0565,0.5433,2.227],[["Phone","Sneakers"],["Socks"],0.0515,0.4952,2.216],[["Phone","Socks"],["Sneakers"],0.0515,0.7923,2.21],[["Phone Case","Sneakers"],["Socks"],0.04,0.4908,2.196],[["Socks"],["Sneakers"],0.172,0.7696,2.147],[["Sneakers"],["Socks"],0.172,0.4798,2.147]]};
+
+/* Rules are keyed by the English product names; fa is the display name. Prices are in toman. */
+var ITEMS = {
+  "T-Shirt":    { fa: "تی‌شرت",       price: 450000,   cat: "fashion" },
+  "Jeans":      { fa: "شلوار جین",    price: 1400000,  cat: "fashion" },
+  "Sneakers":   { fa: "کفش ورزشی",    price: 2900000,  cat: "fashion" },
+  "Socks":      { fa: "جوراب",        price: 150000,   cat: "fashion" },
+  "Jacket":     { fa: "کاپشن",        price: 3800000,  cat: "fashion" },
+  "Sunglasses": { fa: "عینک آفتابی",  price: 1900000,  cat: "fashion" },
+  "Watch":      { fa: "ساعت مچی",     price: 4500000,  cat: "fashion" },
+  "Backpack":   { fa: "کوله‌پشتی",    price: 1200000,  cat: "fashion" },
+  "Phone":      { fa: "گوشی موبایل",  price: 32000000, cat: "tech" },
+  "Phone Case": { fa: "قاب گوشی",     price: 350000,   cat: "tech" },
+  "Charger":    { fa: "شارژر",        price: 700000,   cat: "tech" },
+  "Headphones": { fa: "هدفون",        price: 3600000,  cat: "tech" },
+  "Laptop":     { fa: "لپ‌تاپ",       price: 48000000, cat: "tech" },
+  "Mouse":      { fa: "ماوس",         price: 800000,   cat: "tech" },
+  "Perfume":    { fa: "عطر",          price: 2400000,  cat: "beauty" },
+  "Lipstick":   { fa: "رژ لب",        price: 600000,   cat: "beauty" },
+  "Coffee":     { fa: "قهوه",         price: 120000,   cat: "food" },
+  "Snacks":     { fa: "تنقلات",       price: 80000,    cat: "food" }
+};
+var CAT_LABEL = { all: "همه طبقه‌ها", fashion: "مد و پوشاک", tech: "لوازم دیجیتال", beauty: "آرایشی", food: "فودکورت" };
+
+var cart = ["Sneakers"];
+var filter = "all";
+var minConf = 40;
+
+function $(id) { return document.getElementById(id); }
+function fa(n, digits) { return Number(n).toLocaleString("fa-IR", { maximumFractionDigits: digits || 0, minimumFractionDigits: digits || 0 }); }
+function money(n) { return fa(n) + " تومان"; }
+function nm(key) { return ITEMS[key].fa; }
+function mark(key) { return nm(key).charAt(0); }
+
+function recommend() {
+  var best = {};
+  DATA.rules.forEach(function (r) {
+    var ante = r[0], cons = r[1], conf = r[3], lift = r[4];
+    if (conf * 100 < minConf) return;
+    if (!ante.every(function (a) { return cart.indexOf(a) !== -1; })) return;
+    cons.forEach(function (c) {
+      if (cart.indexOf(c) !== -1) return;
+      var score = conf * lift;
+      if (!best[c] || score > best[c].score) best[c] = { item: c, score: score, conf: conf, lift: lift, ante: ante };
+    });
+  });
+  return Object.keys(best).map(function (k) { return best[k]; })
+    .sort(function (a, b) { return b.score - a.score; }).slice(0, 4);
+}
+
+function renderTabs() {
+  $("tabs").innerHTML = Object.keys(CAT_LABEL).map(function (k) {
+    return '<button type="button" class="tab" data-cat="' + k + '" aria-pressed="' + (filter === k) + '">' + CAT_LABEL[k] + "</button>";
+  }).join("");
+}
+
+function renderGrid() {
+  $("grid").innerHTML = Object.keys(ITEMS).filter(function (k) {
+    return filter === "all" || ITEMS[k].cat === filter;
+  }).map(function (k) {
+    var it = ITEMS[k], inCart = cart.indexOf(k) !== -1;
+    return '<article class="card"><div class="tile cat-' + it.cat + '" aria-hidden="true">' + mark(k) + "</div>" +
+      '<div class="body"><span class="cat">' + CAT_LABEL[it.cat] + "</span><h3>" + it.fa + "</h3>" +
+      '<div class="row"><span class="price">' + money(it.price) + "</span>" +
+      '<button type="button" class="add" data-item="' + k + '" aria-pressed="' + inCart + '">' + (inCart ? "در سبد" : "افزودن به سبد") + "</button></div></div></article>";
+  }).join("");
+}
+
+function renderCart() {
+  var total = cart.reduce(function (s, k) { return s + ITEMS[k].price; }, 0);
+  $("count").textContent = fa(cart.length);
+  $("total").textContent = money(total);
+  $("lines").innerHTML = cart.length ? cart.map(function (k) {
+    return '<li><span class="dot cat-' + ITEMS[k].cat + '"></span><span class="nm">' + nm(k) + '</span><span class="price">' + money(ITEMS[k].price) +
+      '</span><button type="button" class="rm" data-rm="' + k + '" aria-label="حذف ' + nm(k) + '">&times;</button></li>';
+  }).join("") : '<li class="empty">سبد شما خالی است.</li>';
+}
+
+function renderRecs() {
+  var recs = recommend();
+  $("confVal").textContent = fa(minConf) + "٪";
+  if (!cart.length) {
+    $("recSub").textContent = "یک کالا اضافه کنید تا ببینید دیگران همراه آن چه خریده‌اند.";
+    $("recs").innerHTML = "";
+    return;
+  }
+  if (!recs.length) {
+    $("recSub").textContent = "با این حداقل اطمینان، پیشنهاد قوی‌ای برای این سبد پیدا نشد. نوار را کم کنید یا کالای دیگری اضافه کنید.";
+    $("recs").innerHTML = "";
+    return;
+  }
+  $("recSub").textContent = "مرتب‌شده بر اساس اطمینان × لیفت برای کالاهای سبد شما.";
+  $("recs").innerHTML = recs.map(function (r) {
+    var pct = Math.round(r.conf * 100);
+    return '<li class="rec"><span class="nm">' + nm(r.item) + '<br><span class="price" style="color:var(--muted)">' + money(ITEMS[r.item].price) + '</span></span>' +
+      '<button type="button" class="add" data-item="' + r.item + '" aria-pressed="false">افزودن</button>' +
+      '<span class="why"><b class="num">' + fa(pct) + '٪</b> از سبدهایی که ' + r.ante.map(nm).join(" + ") + ' داشتند، این کالا را هم داشتند · لیفت <span class="num">' + fa(r.lift, 1) + '</span> برابر</span>' +
+      '<span class="bar" aria-hidden="true"><i style="width:' + pct + '%"></i></span></li>';
+  }).join("");
+}
+
+function renderMethod() {
+  $("stats").innerHTML = '<span><b>' + fa(DATA.n) + '</b> سبد خرید</span><span><b>' + fa(DATA.itemsets) + '</b> مجموعه‌کالای پرتکرار</span><span><b>' + fa(DATA.nrules) + '</b> قانون</span>';
+  var simple = DATA.rules.filter(function (r) { return r[0].length === 1 && r[1].length === 1; })
+    .sort(function (a, b) { return b[4] - a[4]; }).slice(0, 8);
+  $("rulesBody").innerHTML = simple.map(function (r) {
+    return "<tr><td>" + nm(r[0][0]) + "</td><td>" + nm(r[1][0]) + '</td><td class="n">' + fa(Math.round(r[3] * 100)) + '٪</td><td class="n">' + fa(r[4], 1) + " برابر</td></tr>";
+  }).join("");
+}
+
+function renderAll() { renderGrid(); renderCart(); renderRecs(); }
+
+function toggle(key) {
+  var i = cart.indexOf(key);
+  if (i === -1) cart.push(key); else cart.splice(i, 1);
+  renderAll();
+}
+
+document.addEventListener("click", function (e) {
+  var t = e.target.closest("button");
+  if (!t) return;
+  if (t.dataset.item) toggle(t.dataset.item);
+  else if (t.dataset.rm) toggle(t.dataset.rm);
+  else if (t.dataset.cat) { filter = t.dataset.cat; renderTabs(); renderGrid(); }
+  else if (t.id === "goBasket") $("side").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+$("minConf").addEventListener("input", function (e) { minConf = Number(e.target.value); renderRecs(); });
+
+renderTabs();
+renderAll();
+renderMethod();
+</script>
+
+</body></html>
